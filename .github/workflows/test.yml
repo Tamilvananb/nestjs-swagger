@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: '18'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@focus-brands'
+          scope: '@tamilvananb'
       
       - name: Replace the token in npmrc file
         shell: bash
@@ -35,7 +35,7 @@ jobs:
          sed -i.back "s|NODE_AUTH_TOKEN|${PAT}|g" .npmrc
          
       - name: Get current package version   
-        run: echo "version=$(npm show @focus-brands/gx-ds-location1 version)" >> $GITHUB_ENV
+        run: echo "version=$(npm show @tamilvananb/nestjs-swagger version)" >> $GITHUB_ENV
         
       - name: Set package version in environment  
         run: npm version ${{env.version}} --no-git-tag-version --allow-same-version
@@ -70,6 +70,6 @@ jobs:
       - name: Build the Docker image
         run: docker build -t k8stest:latest .
       - name: Tag the Docker image
-        run: docker tag k8stest:latest docker.pkg.github.com/k8stest:latest
+        run: docker tag k8stest:latest docker.pkg.github.com/tamilvananb/k8stest:latest
       - name: Push the Docker image to the registry
-        run: docker push docker.pkg.github.com/k8stest:latest
+        run: docker push docker.pkg.github.com/tamilvananb/k8stest:latest
