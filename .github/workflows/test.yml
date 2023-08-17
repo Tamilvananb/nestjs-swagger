@@ -1,0 +1,32 @@
+name: Build and Publish Npm Pkg to Docker
+
+on:
+  pull_request:
+    # Sequence of patterns matched against refs/heads
+    branches:    
+      - develop
+
+env:
+  version: 0
+
+jobs:
+
+          
+  build_and_publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GitHub Package Registry
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.repository }} --password-stdin
+      
+      
+      
+      - name: Build the Docker image
+        run: docker build -t k8stest:latest .
+      - name: Tag the Docker image
+        run: docker tag k8stest:latest docker.pkg.github.com/k8stest:latest
+      - name: Push the Docker image to the registry
+        run: docker push docker.pkg.github.com/k8stest:latest
