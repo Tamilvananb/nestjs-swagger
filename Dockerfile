@@ -6,7 +6,7 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json (if available)
-COPY tsconfig.json package*.json ./
+COPY .npmrc tsconfig.json package*.json ./
 
 # Install project dependencies
 RUN npm install @tamilvananb/nestjs-swagger@0.0.2
