@@ -60,7 +60,7 @@
     "typescript": "^4.7.4"
   },
   "publishConfig": {
-    "@focus-brands:registry": "https://npm.pkg.github.com"
+    "@tamilvananb:registry": "https://npm.pkg.github.com"
   },
   "jest": {
     "moduleFileExtensions": [
