@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY tsconfig.json package*.json ./
 
 # Install project dependencies
-RUN npm install nestjs-swagger@latest
+RUN npm install tamilvananb/nestjs-swagger@latest
 
 # Creates a "dist" folder with the production build
 RUN npm run build
