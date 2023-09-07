@@ -3,7 +3,7 @@ name: Test Workflow
 on:
   push:
     branches:
-      - test  # Adjust the branch name as needed
+      - main  # Adjust the branch name as needed
 
 jobs:
   test:
